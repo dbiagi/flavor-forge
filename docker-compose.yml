@@ -1,0 +1,11 @@
+services:
+  db:
+    image: postgres:16.5-alpine3.20
+    environment:
+        POSTGRES_USER: ${POSTGRES_USER?error}
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD?error}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/schema.sql
+#      - db_data:/var/lib/postgresql/data
