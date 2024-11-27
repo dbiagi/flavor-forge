@@ -5,8 +5,8 @@ import (
 )
 
 type Recipe struct {
-	Id          int
-	Title       string
-	Description string
-	CreatedAt   time.Time
+	Id          int       `json:"id"`
+	Title       string    `json:"title"`
+	Description string    `json:"description"`
+	CreatedAt   time.Time `json:"created_at"`
 }

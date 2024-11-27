@@ -1,21 +1,27 @@
 package handler
 
 import (
+	"encoding/json"
 	"net/http"
+)
 
-	"github.com/gin-gonic/gin"
+type HealthStatus string
+
+const (
+	UP   HealthStatus = "UP"
+	DOWN HealthStatus = "DOWN"
 )
 
 type HealthCheckResponse struct {
-	Status string `json:"status"`
+	Status HealthStatus `json:"status"`
 }
 
-func HealthCheck(c *gin.Context) {
-	health := HealthCheckResponse{Status: "UP"}
-	c.JSON(http.StatusOK, health)
+func HealthCheck(w http.ResponseWriter, r *http.Request) {
+	health := HealthCheckResponse{Status: UP}
+	json.NewEncoder(w).Encode(health)
 }
 
-func HealthCheckComplete(c *gin.Context) {
-	health := HealthCheckResponse{Status: "UP"}
-	c.JSON(http.StatusOK, health)
+func HealthCheckComplete(w http.ResponseWriter, r *http.Request) {
+	health := HealthCheckResponse{Status: UP}
+	json.NewEncoder(w).Encode(health)
 }
