@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/dbiagi/gororoba/src/config"
 	"github.com/dbiagi/gororoba/src/domain"
+	"github.com/dbiagi/gororoba/src/handler"
 	"github.com/dbiagi/gororoba/src/repository"
 	"github.com/spf13/cobra"
 	"log/slog"
@@ -26,11 +27,13 @@ func NewCreateRecipesCommand(c config.AWSConfig) *cobra.Command {
 func command(c config.AWSConfig) cobraCommand {
 	return func(cmd *cobra.Command, args []string) {
 		dynamoDb, dynamoConnectError := config.CreateDynamoDBConnection(c)
+
 		if dynamoConnectError != nil {
 			slog.Error(fmt.Sprintf("Failed to run command %v.", dynamoConnectError))
 			return
 		}
 		r := repository.NewRecipeRepository(dynamoDb)
+		h := handler.NewRecipesHandler(r)
 
 		jsonFile := args[0]
 
@@ -49,14 +52,12 @@ func command(c config.AWSConfig) cobraCommand {
 		}
 
 		for _, recipe := range recipes {
-			insertRecipe(recipe, r)
+			insertRecipe(&recipe, h)
 		}
 	}
 }
 
-func insertRecipe(recipe domain.Recipe, r repository.RecipeRepository) {
-	if err := r.CreateRecipe(&recipe); err != nil {
-		slog.Error(fmt.Sprintf("Failed to create recipe: %s", recipe.Title))
-		return
-	}
+func insertRecipe(recipe *domain.Recipe, h handler.RecipesHandler) {
+	slog.Info(fmt.Sprintf("Creating recipe: %s", recipe.Title))
+	h.CreateRecipe(recipe)
 }

@@ -5,9 +5,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/dbiagi/gororoba/src/domain"
-	"github.com/google/uuid"
+	"github.com/dbiagi/gororoba/src/model"
 	"log/slog"
-	"time"
 )
 
 const (
@@ -23,15 +22,35 @@ func NewRecipeRepository(db *dynamodb.DynamoDB) RecipeRepository {
 }
 
 func (r *RecipeRepository) GetRecipesByCategory(category string) []domain.Recipe {
-	return []domain.Recipe{}
+
+	input := dynamodb.QueryInput{
+		TableName:              aws.String(RecipeTable),
+		KeyConditionExpression: aws.String("category = :category"),
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			":category": {
+				S: aws.String(category),
+			},
+		},
+	}
+
+	result, err := r.DynamoDB.Query(&input)
+
+	if err != nil {
+		slog.Error("Error querying for recipes by category", slog.String("error", err.Error()))
+		return nil
+	}
+
+	var recipes []domain.Recipe
+	err = dynamodbattribute.UnmarshalListOfMaps(result.Items, &recipes)
+	if err != nil {
+		slog.Error("Error unmarshalling query result", slog.String("error", err.Error()))
+		return nil
+	}
+
+	return recipes
 }
 
-func (r *RecipeRepository) CreateRecipe(recipe *domain.Recipe) *domain.Error {
-	recipe.Id = uuid.New().String()
-	recipe.CreatedAt = time.Now()
-	recipe.UpdatedAt = time.Now()
-	recipe.IdAndUpdatedAt = recipe.Id + "#" + recipe.UpdatedAt.Format(time.RFC3339)
-
+func (r *RecipeRepository) CreateRecipe(recipe model.RecipeModel) *domain.Error {
 	marshalledItem, marshallError := dynamodbattribute.MarshalMap(recipe)
 
 	if marshallError != nil {
@@ -42,7 +61,7 @@ func (r *RecipeRepository) CreateRecipe(recipe *domain.Recipe) *domain.Error {
 		}
 	}
 	_, putError := r.PutItem(&dynamodb.PutItemInput{
-		TableName: getTableName(),
+		TableName: aws.String(RecipeTable),
 		Item:      marshalledItem,
 	})
 
@@ -55,8 +74,4 @@ func (r *RecipeRepository) CreateRecipe(recipe *domain.Recipe) *domain.Error {
 	}
 
 	return nil
-}
-
-func getTableName() *string {
-	return aws.String(RecipeTable)
 }

@@ -4,6 +4,7 @@ import (
 	"github.com/joho/godotenv"
 	"log/slog"
 	"os"
+	"time"
 )
 
 const (
@@ -24,7 +25,11 @@ type AppConfig struct {
 }
 
 type WebConfig struct {
-	Port string
+	Port            string
+	IdleTimeout     time.Duration
+	ReadTimeout     time.Duration
+	WriteTimeout    time.Duration
+	ShutdownTimeout time.Duration
 }
 
 type DatabaseConfig struct {
@@ -46,7 +51,11 @@ func LoadConfig(env string) Configuration {
 
 	return Configuration{
 		WebConfig: WebConfig{
-			Port: os.Getenv("PORT"),
+			Port:            os.Getenv("PORT"),
+			IdleTimeout:     time.Second * 10,
+			ReadTimeout:     time.Second * 10,
+			WriteTimeout:    time.Second * 10,
+			ShutdownTimeout: time.Second * 20,
 		},
 		AppConfig: AppConfig{
 			Name:        AppName,

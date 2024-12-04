@@ -20,7 +20,7 @@
       {"name": "salt", "quantity": "0.5", "measureUnit": "teaspoon"},
       {"name": "chocolate chips", "quantity": "2", "measureUnit": "cup"}
     ],
-    "category": "Dessert"
+    "category": "dessert"
   },
   {
     "id": "2",
@@ -40,7 +40,7 @@
       {"name": "parsley", "quantity": "0.25", "measureUnit": "cup"},
       {"name": "Parmesan cheese", "quantity": "0.5", "measureUnit": "cup"}
     ],
-    "category": "Main Course"
+    "category": "main_course"
   },
   {
     "id": "3",
@@ -61,7 +61,7 @@
       {"name": "black pepper", "quantity": "1", "measureUnit": "teaspoon"},
       {"name": "salt", "quantity": "1", "measureUnit": "teaspoon"}
     ],
-    "category": "Main Course"
+    "category": "main_course"
   },
   {
     "id": "4",
@@ -79,7 +79,7 @@
       {"name": "croutons", "quantity": "1", "measureUnit": "cup"},
       {"name": "black pepper", "quantity": "1", "measureUnit": "teaspoon"}
     ],
-    "category": "Salad"
+    "category": "salad"
   },
   {
     "id": "5",
@@ -99,7 +99,7 @@
       {"name": "tomato", "quantity": "2", "measureUnit": "pcs"},
       {"name": "cheddar cheese", "quantity": "1", "measureUnit": "cup"}
     ],
-    "category": "Main Course"
+    "category": "main_course"
   },
   {
     "id": "6",
@@ -121,7 +121,7 @@
       {"name": "salt", "quantity": "1", "measureUnit": "teaspoon"},
       {"name": "black pepper", "quantity": "1", "measureUnit": "teaspoon"}
     ],
-    "category": "Main Course"
+    "category": "main_course"
   },
   {
     "id": "7",
@@ -141,7 +141,7 @@
       {"name": "salt", "quantity": "0.5", "measureUnit": "teaspoon"},
       {"name": "sugar", "quantity": "1", "measureUnit": "tablespoon"}
     ],
-    "category": "Breakfast"
+    "category": "breakfast"
   },
   {
     "id": "8",
@@ -161,7 +161,7 @@
       {"name": "garlic", "quantity": "2", "measureUnit": "cloves"},
       {"name": "sesame oil", "quantity": "1", "measureUnit": "tablespoon"}
     ],
-    "category": "Main Course"
+    "category": "main_course"
   },
   {
     "id": "9",
@@ -179,7 +179,7 @@
       {"name": "basil", "quantity": "0.25", "measureUnit": "cup"},
       {"name": "olive oil", "quantity": "1", "measureUnit": "tablespoon"}
     ],
-    "category": "Main Course"
+    "category": "main_course"
   },
   {
     "id": "10",
@@ -199,7 +199,7 @@
       {"name": "lemon zest", "quantity": "1", "measureUnit": "pcs"},
       {"name": "lemon juice", "quantity": "0.5", "measureUnit": "cup"}
     ],
-    "category": "Dessert"
+    "category": "dessert"
   },
   {
     "id": "11",
@@ -220,7 +220,7 @@
       {"name": "salt", "quantity": "1", "measureUnit": "teaspoon"},
       {"name": "cilantro", "quantity": "0.25", "measureUnit": "cup"}
     ],
-    "category": "Main Course"
+    "category": "main_course"
   },
   {
     "id": "12",
@@ -237,7 +237,7 @@
       {"name": "salt", "quantity": "1", "measureUnit": "pinch"},
       {"name": "chives", "quantity": "1", "measureUnit": "tablespoon"}
     ],
-    "category": "Breakfast"
+    "category": "breakfast"
   },
   {
     "id": "13",
@@ -256,7 +256,7 @@
       {"name": "cilantro", "quantity": "2", "measureUnit": "tablespoon"},
       {"name": "tomato", "quantity": "1", "measureUnit": "pcs"}
     ],
-    "category": "Appetizer"
+    "category": "appetizer"
   },
   {
     "id": "14",
@@ -275,7 +275,7 @@
       {"name": "vegetable broth", "quantity": "4", "measureUnit": "cup"},
       {"name": "basil", "quantity": "1", "measureUnit": "tablespoon"}
     ],
-    "category": "Soup"
+    "category": "soup"
   },
   {
     "id": "15",
@@ -295,7 +295,7 @@
       {"name": "olive oil", "quantity": "2", "measureUnit": "tablespoon"},
       {"name": "oregano", "quantity": "1", "measureUnit": "teaspoon"}
     ],
-    "category": "Salad"
+    "category": "salad"
   },
   {
     "id": "16",
@@ -317,7 +317,7 @@
       {"name": "flour", "quantity": "1.5", "measureUnit": "cup"},
       {"name": "walnuts", "quantity": "0.5", "measureUnit": "cup"}
     ],
-    "category": "Dessert"
+    "category": "dessert"
   },
   {
     "id": "17",
@@ -336,7 +336,7 @@
       {"name": "cheddar cheese", "quantity": "1", "measureUnit": "cup"},
       {"name": "lettuce", "quantity": "1", "measureUnit": "head"}
     ],
-    "category": "Main Course"
+    "category": "main_course"
   },
   {
     "id": "18",
@@ -358,7 +358,7 @@
       {"name": "boiling water", "quantity": "1", "measureUnit": "cup"},
       {"name": "sugar", "quantity": "2", "measureUnit": "cup"}
     ],
-    "category": "Dessert"
+    "category": "dessert"
   },
   {
     "id": "19",
@@ -378,7 +378,7 @@
       {"name": "marinara sauce", "quantity": "1", "measureUnit": "cup"},
       {"name": "mozzarella cheese", "quantity": "1", "measureUnit": "cup"}
     ],
-    "category": "Main Course"
+    "category": "main_course"
   },
   {
     "id": "20",
@@ -398,6 +398,6 @@
       {"name": "parsley", "quantity": "2", "measureUnit": "tablespoon"},
       {"name": "red pepper flakes", "quantity": "0.5", "measureUnit": "teaspoon"}
     ],
-    "category": "Main Course"
+    "category": "main_course"
   }
 ]

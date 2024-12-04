@@ -12,13 +12,6 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
-	"time"
-)
-
-const (
-	idleTimeout  = 10
-	writeTimeout = 10
-	readTimeout  = 10
 )
 
 type Controllers struct {
@@ -40,7 +33,7 @@ func main() {
 	dynamoDB := connectToDynamoDB(appConfig.AWSConfig)
 
 	slog.Info("Starting server ....")
-	srv, router := createServer()
+	srv, router := createServer(appConfig.WebConfig)
 
 	slog.Info("Creating resources ....")
 	appResources := createControllers(dynamoDB)
@@ -49,7 +42,7 @@ func main() {
 	registerRoutesAndServe(router, appResources)
 
 	slog.Info("Configuring graceful shutdown ....")
-	configureGracefullShutdown(srv)
+	configureGracefullShutdown(srv, appConfig.WebConfig)
 }
 
 func connectToDynamoDB(awsConfig config.AWSConfig) *dynamodb.DynamoDB {
@@ -62,14 +55,14 @@ func connectToDynamoDB(awsConfig config.AWSConfig) *dynamodb.DynamoDB {
 	return dynamoDB
 }
 
-func createServer() (*http.Server, *mux.Router) {
+func createServer(webConfig config.WebConfig) (*http.Server, *mux.Router) {
 	router := mux.NewRouter()
 	srv := &http.Server{
 		Addr:         ":" + os.Getenv("PORT"),
 		Handler:      router,
-		IdleTimeout:  time.Second * idleTimeout,
-		ReadTimeout:  time.Second * readTimeout,
-		WriteTimeout: time.Second * writeTimeout,
+		IdleTimeout:  webConfig.IdleTimeout,
+		ReadTimeout:  webConfig.ReadTimeout,
+		WriteTimeout: webConfig.WriteTimeout,
 	}
 
 	go func() {
@@ -100,12 +93,12 @@ func registerRoutesAndServe(router *mux.Router, controllers Controllers) {
 	router.HandleFunc("/recipes", controller.HandleRequest(controllers.RecipesController.GetRecipes)).Methods("GET")
 }
 
-func configureGracefullShutdown(server *http.Server) {
+func configureGracefullShutdown(server *http.Server, webConfig config.WebConfig) {
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	<-c
 
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second*writeTimeout)
+	ctx, cancel := context.WithTimeout(context.Background(), webConfig.ShutdownTimeout)
 	defer cancel()
 
 	server.Shutdown(ctx)
