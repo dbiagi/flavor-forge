@@ -2,12 +2,12 @@ package main
 
 import (
 	"context"
+	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/dbiagi/gororoba/src/config"
 	"github.com/dbiagi/gororoba/src/controller"
 	"github.com/dbiagi/gororoba/src/handler"
 	"github.com/dbiagi/gororoba/src/repository"
 	"github.com/gorilla/mux"
-	"github.com/joho/godotenv"
 	"log/slog"
 	"net/http"
 	"os"
@@ -21,27 +21,45 @@ const (
 	readTimeout  = 10
 )
 
+type Controllers struct {
+	controller.HealthCheckController
+	controller.RecipesController
+}
+
 func main() {
-	envErr := godotenv.Load(".env")
-	if envErr != nil {
-		slog.Info("Error loading .env file: %v\n", envErr)
-		return
+	appEnv := os.Getenv("APP_ENV")
+	if appEnv == "" {
+		appEnv = "development"
 	}
 
-	appEnv := os.Getenv("APP_ENV")
-	config.ConfigureLogger(appEnv)
+	appConfig := config.LoadConfig(appEnv)
+
+	config.ConfigureLogger(appConfig.AppConfig)
+
+	slog.Info("Connecting to dynamoDB ....")
+	dynamoDB := connectToDynamoDB(appConfig.AWSConfig)
 
 	slog.Info("Starting server ....")
 	srv, router := createServer()
 
 	slog.Info("Creating resources ....")
-	appResources := createControllers()
+	appResources := createControllers(dynamoDB)
 
 	slog.Info("Registering routes and serving ....")
 	registerRoutesAndServe(router, appResources)
 
 	slog.Info("Configuring graceful shutdown ....")
 	configureGracefullShutdown(srv)
+}
+
+func connectToDynamoDB(awsConfig config.AWSConfig) *dynamodb.DynamoDB {
+	dynamoDB, err := config.CreateDynamoDBConnection(awsConfig)
+	if err != nil {
+		slog.Error("Error connecting to dynamodb.", slog.String("error", err.Message))
+		panic(err)
+	}
+
+	return dynamoDB
 }
 
 func createServer() (*http.Server, *mux.Router) {
@@ -57,26 +75,16 @@ func createServer() (*http.Server, *mux.Router) {
 	go func() {
 		err := srv.ListenAndServe()
 		if err != nil {
-			slog.Error("Error starting server: %v\n", err)
+			slog.Error("Error starting server.", slog.String("error", err.Error()))
 		}
 	}()
 
 	return srv, router
 }
 
-type Controllers struct {
-	controller.HealthCheckController
-	controller.RecipesController
-}
-
-func createControllers() Controllers {
-	db, err := config.ConnectToDatabase()
-	if err != nil {
-		slog.Error("Error connecting to database: %v\n", err)
-	}
-
-	recipeRepository := repository.NewRecipeRepository(*db)
-	healthCheckHandler := handler.NewHealthCheckHandler(*db)
+func createControllers(db *dynamodb.DynamoDB) Controllers {
+	recipeRepository := repository.NewRecipeRepository(db)
+	healthCheckHandler := handler.NewHealthCheckHandler()
 	recipeHandler := handler.NewRecipesHandler(recipeRepository)
 
 	return Controllers{

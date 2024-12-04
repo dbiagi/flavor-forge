@@ -13,6 +13,6 @@ func NewRecipesHandler(r repository.RecipeRepository) RecipesHandler {
 	return RecipesHandler{RecipeRepository: r}
 }
 
-func (h *RecipesHandler) GetRecipes() []domain.Recipe {
-	return h.RecipeRepository.GetRecipes()
+func (h *RecipesHandler) GetRecipesByCategory(category string) []domain.Recipe {
+	return h.RecipeRepository.GetRecipesByCategory(category)
 }

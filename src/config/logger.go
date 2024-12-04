@@ -22,11 +22,11 @@ func (h *ContextHandler) Handle(ctx context.Context, r slog.Record) error {
 	return h.Handler.Handle(ctx, r)
 }
 
-func ConfigureLogger(env string) {
+func ConfigureLogger(appConfig AppConfig) {
 	defaultAttrs := []slog.Attr{
-		slog.String("service", "gororoba"),
-		slog.String("environment", env),
-		slog.String("version", "1.0.0"),
+		slog.String("service", appConfig.Name),
+		slog.String("environment", appConfig.Environment),
+		slog.String("version", appConfig.Version),
 	}
 	handlerOptions := &slog.HandlerOptions{
 		AddSource: true,

@@ -1,15 +1,18 @@
 package domain
 
-type MeasureUnit int
+type MeasureUnit string
 
 const (
-	Milligram  MeasureUnit = iota
-	Gram       MeasureUnit = iota
-	Kilogram   MeasureUnit = iota
-	Teaspoon   MeasureUnit = iota
-	Tablespoon MeasureUnit = iota
-	Cup        MeasureUnit = iota
-	Ounce      MeasureUnit = iota
-	MilliLiter MeasureUnit = iota
-	Liter      MeasureUnit = iota
+	Cloves     MeasureUnit = "cloves"
+	Cup        MeasureUnit = "cup"
+	Gram       MeasureUnit = "gr"
+	Kilogram   MeasureUnit = "kg"
+	Liter      MeasureUnit = "l"
+	Milligram  MeasureUnit = "ml"
+	MilliLiter MeasureUnit = "ml"
+	Ounce      MeasureUnit = "ounces"
+	Pieces     MeasureUnit = "pcs"
+	Pint       MeasureUnit = "pint"
+	Tablespoon MeasureUnit = "tablespoon"
+	Teaspoon   MeasureUnit = "teaspoon"
 )

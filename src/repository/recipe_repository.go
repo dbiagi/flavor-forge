@@ -1,47 +1,62 @@
 package repository
 
 import (
-	"github.com/dbiagi/gororoba/src/config"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/dynamodb"
+	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/dbiagi/gororoba/src/domain"
+	"github.com/google/uuid"
 	"log/slog"
+	"time"
+)
+
+const (
+	RecipeTable = "Recipe"
 )
 
 type RecipeRepository struct {
-	config.Database
+	*dynamodb.DynamoDB
 }
 
-func NewRecipeRepository(db config.Database) RecipeRepository {
-	return RecipeRepository{Database: db}
+func NewRecipeRepository(db *dynamodb.DynamoDB) RecipeRepository {
+	return RecipeRepository{DynamoDB: db}
 }
 
-func (r *RecipeRepository) GetRecipes() []domain.Recipe {
-	rows, err := r.Database.Query("SELECT id, title, description, servings, prep_time, slug, created_at, updated_at FROM recipe LIMIT 10")
+func (r *RecipeRepository) GetRecipesByCategory(category string) []domain.Recipe {
+	return []domain.Recipe{}
+}
 
-	if err != nil {
-		slog.Error("Error querying recipes: %v\n", err)
-		return []domain.Recipe{}
-	}
+func (r *RecipeRepository) CreateRecipe(recipe *domain.Recipe) *domain.Error {
+	recipe.Id = uuid.New().String()
+	recipe.CreatedAt = time.Now()
+	recipe.UpdatedAt = time.Now()
+	recipe.IdAndUpdatedAt = recipe.Id + "#" + recipe.UpdatedAt.Format(time.RFC3339)
 
-	var recipes []domain.Recipe
-	var recipe domain.Recipe
-	for rows.Next() {
-		err := rows.Scan(
-			&recipe.Id,
-			&recipe.Title,
-			&recipe.Description,
-			&recipe.Servings,
-			&recipe.PrepTime,
-			&recipe.Slug,
-			&recipe.CreatedAt,
-			&recipe.UpdatedAt)
-		if err != nil {
-			slog.Error("Error scanning recipe: %v\n", err)
-			return []domain.Recipe{}
+	marshalledItem, marshallError := dynamodbattribute.MarshalMap(recipe)
+
+	if marshallError != nil {
+		slog.Error("Error marshalling recipe", slog.String("error", marshallError.Error()))
+		return &domain.Error{
+			Message: "Error marshalling recipe. Message: " + marshallError.Error(),
+			Cause:   marshallError,
 		}
-		recipes = append(recipes, recipe)
+	}
+	_, putError := r.PutItem(&dynamodb.PutItemInput{
+		TableName: getTableName(),
+		Item:      marshalledItem,
+	})
+
+	if putError != nil {
+		slog.Error("Error putting recipe", slog.String("error", putError.Error()))
+		return &domain.Error{
+			Message: "Error putting recipe. Message: " + putError.Error(),
+			Cause:   putError,
+		}
 	}
 
-	defer rows.Close()
+	return nil
+}
 
-	return recipes
+func getTableName() *string {
+	return aws.String(RecipeTable)
 }

@@ -14,5 +14,7 @@ func NewRecipesController(h handler.RecipesHandler) RecipesController {
 }
 
 func (rc *RecipesController) GetRecipes(w http.ResponseWriter, r *http.Request) HttpResponse {
-	return HttpResponse{Body: rc.RecipesHandler.GetRecipes()}
+	category := r.URL.Query().Get("category")
+	recipes := rc.RecipesHandler.GetRecipesByCategory(category)
+	return HttpResponse{Body: recipes}
 }
