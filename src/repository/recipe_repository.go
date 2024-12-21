@@ -1,17 +1,23 @@
 package repository
 
 import (
+	"log/slog"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/dbiagi/gororoba/src/domain"
 	"github.com/dbiagi/gororoba/src/model"
-	"log/slog"
 )
 
 const (
 	RecipeTable = "Recipe"
 )
+
+type RecipeRepositoryInterface interface {
+	GetRecipesByCategory(category string) []domain.Recipe
+	CreateRecipe(recipe model.RecipeModel) *domain.Error
+}
 
 type RecipeRepository struct {
 	*dynamodb.DynamoDB
@@ -21,7 +27,7 @@ func NewRecipeRepository(db *dynamodb.DynamoDB) RecipeRepository {
 	return RecipeRepository{DynamoDB: db}
 }
 
-func (r *RecipeRepository) GetRecipesByCategory(category string) []domain.Recipe {
+func (r RecipeRepository) GetRecipesByCategory(category string) []domain.Recipe {
 
 	input := dynamodb.QueryInput{
 		TableName:              aws.String(RecipeTable),
@@ -50,7 +56,7 @@ func (r *RecipeRepository) GetRecipesByCategory(category string) []domain.Recipe
 	return recipes
 }
 
-func (r *RecipeRepository) CreateRecipe(recipe model.RecipeModel) *domain.Error {
+func (r RecipeRepository) CreateRecipe(recipe model.RecipeModel) *domain.Error {
 	marshalledItem, marshallError := dynamodbattribute.MarshalMap(recipe)
 
 	if marshallError != nil {

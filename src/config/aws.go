@@ -1,16 +1,23 @@
 package config
 
 import (
+	"log/slog"
+
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/dbiagi/gororoba/src/domain"
-	"log/slog"
+)
+
+const (
+	AWS_CREDENTIAL_TYPE_STATIC = "static"
 )
 
 func CreateDynamoDBConnection(awsConfig AWSConfig) (*dynamodb.DynamoDB, *domain.Error) {
 	config := aws.Config{
-		Region: aws.String(awsConfig.Region),
+		Region:   aws.String(awsConfig.Region),
+		Endpoint: aws.String(awsConfig.Endpoint),
 	}
 	sess := session.Must(session.NewSession(&config))
 	dynamoDB := dynamodb.New(sess)
@@ -24,4 +31,12 @@ func CreateDynamoDBConnection(awsConfig AWSConfig) (*dynamodb.DynamoDB, *domain.
 	}
 
 	return dynamoDB, nil
+}
+
+func getAWSCredentials(awsConfig AWSConfig) *credentials.Credentials {
+	if awsConfig.AWSCredentialsConfig.CredentialType == AWS_CREDENTIAL_TYPE_STATIC {
+		return credentials.NewStaticCredentials(awsConfig.AWSCredentialsConfig.AccessKeyID, awsConfig.AWSCredentialsConfig.SecretAccessKey, "")
+	}
+
+	return nil
 }

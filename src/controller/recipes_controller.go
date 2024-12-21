@@ -6,10 +6,10 @@ import (
 )
 
 type RecipesController struct {
-	handler.RecipesHandler
+	RecipesHandler handler.RecipesHandlerInterface
 }
 
-func NewRecipesController(h handler.RecipesHandler) RecipesController {
+func NewRecipesController(h handler.RecipesHandlerInterface) RecipesController {
 	return RecipesController{RecipesHandler: h}
 }
 

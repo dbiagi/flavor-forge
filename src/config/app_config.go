@@ -1,20 +1,23 @@
 package config
 
 import (
-	"github.com/joho/godotenv"
+	"fmt"
 	"log/slog"
 	"os"
 	"time"
+
+	"github.com/joho/godotenv"
 )
 
 const (
-	AppName = "gororoba"
+	AppName        = "gororoba"
+	DevelopmentEnv = "development"
+	ProductionEnv  = "production"
 )
 
 type Configuration struct {
 	WebConfig
 	AppConfig
-	DatabaseConfig
 	AWSConfig
 }
 
@@ -32,26 +35,28 @@ type WebConfig struct {
 	ShutdownTimeout time.Duration
 }
 
-type DatabaseConfig struct {
-	ConnectionUrl      string
-	MaxIdleConnections int
-	MaxOpenConnections int
-}
-
 type AWSConfig struct {
 	Region string
+	AWSCredentialsConfig
+	DynamoDBConfig
+}
+
+type AWSCredentialsConfig struct {
+	CredentialType  string
+	AccessKeyID     string
+	SecretAccessKey string
+}
+
+type DynamoDBConfig struct {
+	Endpoint string
 }
 
 func LoadConfig(env string) Configuration {
-	envErr := godotenv.Load(".env")
-	if envErr != nil {
-		slog.Error("Error loading .env file: %v\n", envErr)
-		panic(envErr)
-	}
+	configs := loadFromFile(env)
 
 	return Configuration{
 		WebConfig: WebConfig{
-			Port:            os.Getenv("PORT"),
+			Port:            configs["PORT"],
 			IdleTimeout:     time.Second * 10,
 			ReadTimeout:     time.Second * 10,
 			WriteTimeout:    time.Second * 10,
@@ -62,13 +67,30 @@ func LoadConfig(env string) Configuration {
 			Version:     "1.0.0",
 			Environment: env,
 		},
-		DatabaseConfig: DatabaseConfig{
-			ConnectionUrl:      os.Getenv("POSTGRES_URL"),
-			MaxIdleConnections: 20,
-			MaxOpenConnections: 200,
-		},
 		AWSConfig: AWSConfig{
-			Region: os.Getenv("AWS_REGION"),
+			Region: configs["AWS_REGION"],
+			DynamoDBConfig: DynamoDBConfig{
+				Endpoint: configs["AWS_DYNAMODB_ENDPOINT"],
+			},
+			AWSCredentialsConfig: AWSCredentialsConfig{
+				CredentialType:  configs["AWS_CREDENTIAL_TYPE"],
+				AccessKeyID:     configs["AWS_ACCESS_KEY_ID"],
+				SecretAccessKey: configs["AWS_SECRET_ACCESS_KEY"],
+			},
 		},
 	}
+}
+
+func loadFromFile(env string) map[string]string {
+	path, _ := os.Getwd()
+	configFilePath := fmt.Sprintf("%s/.%s.env", path, env)
+
+	configs, err := godotenv.Read(configFilePath)
+
+	if err != nil {
+		slog.Error("Error loading .env file: %v\n", err)
+		panic(err)
+	}
+
+	return configs
 }
