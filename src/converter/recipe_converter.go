@@ -1,9 +1,10 @@
 package converter
 
 import (
+	"time"
+
 	"github.com/dbiagi/gororoba/src/domain"
 	"github.com/dbiagi/gororoba/src/model"
-	"time"
 )
 
 func ToRecipeModel(r domain.Recipe) model.RecipeModel {

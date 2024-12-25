@@ -3,24 +3,41 @@ package handler_test
 import (
 	"testing"
 
-	"github.com/dbiagi/gororoba/src/domain"
+	"github.com/dbiagi/gororoba/src/handler"
+	mock_repository "github.com/dbiagi/gororoba/test/mocks"
+	fixtures_test "github.com/dbiagi/gororoba/test/unit/fixtures"
+	"github.com/stretchr/testify/assert"
+	"go.uber.org/mock/gomock"
 )
 
-type MockRecipeRepository interface {
-	GetRecipesByCategory(category string) []domain.Recipe
-	CreateRecipe(recipe interface{}) *domain.Error
+type testSetup struct {
+	recipeHandler        *handler.RecipesHandler
+	recipeRepositoryMock *mock_repository.MockRecipeRepositoryInterface
+}
+
+func setup(t *testing.T) testSetup {
+	ctrl := gomock.NewController(t)
+	rr := mock_repository.NewMockRecipeRepositoryInterface(ctrl)
+	h := handler.NewRecipesHandler(rr)
+
+	return testSetup{
+		recipeHandler:        &h,
+		recipeRepositoryMock: rr,
+	}
 }
 
 func TestGetRecipesByCategory(t *testing.T) {
-	// t.Run("Should return a list of recipes by category", func(t *testing.T) {
+	t.Run("Should return a list of recipes by category", func(t *testing.T) {
+		// Given
+		s := setup(t)
+		c := "Dessert"
+		r := fixtures_test.GetRecipesWithCategory(c)
+		s.recipeRepositoryMock.EXPECT().GetRecipesByCategory(c).Return(r)
 
-	// 	h := handler.NewRecipesHandler(interface{})
+		// When
+		result := s.recipeHandler.GetRecipesByCategory(c)
 
-	// 	category := "Dessert"
-	// 	expectedRecipes := []domain.Recipe{}
-
-	// 	recipes := h.GetRecipesByCategory(category)
-
-	// 	assert.Equal(t, expectedRecipes, recipes)
-	// })
+		// Then
+		assert.GreaterOrEqual(t, len(result), 1)
+	})
 }

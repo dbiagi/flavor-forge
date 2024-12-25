@@ -2,6 +2,7 @@ package controller
 
 import (
 	"encoding/json"
+	"fmt"
 	"log/slog"
 	"net/http"
 )
@@ -39,7 +40,10 @@ func HandleRequest(fn HttpHandlerFunc) http.HandlerFunc {
 			bytes, marshalingError = json.Marshal(response.Body)
 
 			if marshalingError != nil {
-				slog.Error("Error marshalling response: %v\n", marshalingError)
+				slog.Error(
+					fmt.Sprintf("Error marshalling response: %v", marshalingError.Error()),
+					slog.String("error", marshalingError.Error()),
+				)
 				w.WriteHeader(http.StatusInternalServerError)
 			}
 
