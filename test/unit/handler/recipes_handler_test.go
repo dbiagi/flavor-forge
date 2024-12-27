@@ -26,6 +26,10 @@ func setup(t *testing.T) testSetup {
 	}
 }
 
+func setup() {
+
+}
+
 func TestGetRecipesByCategory(t *testing.T) {
 	t.Run("Should return a list of recipes by category", func(t *testing.T) {
 		// Given
