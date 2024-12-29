@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/dbiagi/gororoba/src/handler"
-	mock_repository "github.com/dbiagi/gororoba/test/mocks"
-	fixtures_test "github.com/dbiagi/gororoba/test/unit/fixtures"
+	mock_repository "github.com/dbiagi/gororoba/tests/mocks"
+	fixtures_test "github.com/dbiagi/gororoba/tests/unit/fixtures"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/mock/gomock"
 )

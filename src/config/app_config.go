@@ -72,11 +72,6 @@ func LoadConfig(env string) Configuration {
 			DynamoDBConfig: DynamoDBConfig{
 				Endpoint: configs["AWS_DYNAMODB_ENDPOINT"],
 			},
-			AWSCredentialsConfig: AWSCredentialsConfig{
-				CredentialType:  configs["AWS_CREDENTIAL_TYPE"],
-				AccessKeyID:     configs["AWS_ACCESS_KEY_ID"],
-				SecretAccessKey: configs["AWS_SECRET_ACCESS_KEY"],
-			},
 		},
 	}
 }
