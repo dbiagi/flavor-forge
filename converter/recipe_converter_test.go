@@ -4,9 +4,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dbiagi/gororoba/src/converter"
-	"github.com/dbiagi/gororoba/src/domain"
-	"github.com/dbiagi/gororoba/src/model"
+	"gororoba/converter"
+	"gororoba/domain"
+	"gororoba/model"
+
 	"github.com/stretchr/testify/assert"
 )
 

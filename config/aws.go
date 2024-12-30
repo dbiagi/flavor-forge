@@ -3,10 +3,11 @@ package config
 import (
 	"log/slog"
 
+	"gororoba/domain"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"github.com/dbiagi/gororoba/src/domain"
 )
 
 func CreateDynamoDBConnection(awsConfig AWSConfig) (*dynamodb.DynamoDB, *domain.Error) {

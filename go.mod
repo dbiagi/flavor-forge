@@ -1,4 +1,4 @@
-module github.com/dbiagi/gororoba
+module gororoba
 
 go 1.23
 
