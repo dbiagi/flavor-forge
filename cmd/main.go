@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/dbiagi/gororoba/cmd/commands"
-	"github.com/dbiagi/gororoba/src/config"
+	"gororoba/cmd/commands"
+	"gororoba/config"
+
 	"github.com/spf13/cobra"
 )
 

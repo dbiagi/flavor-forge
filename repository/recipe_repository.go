@@ -3,11 +3,12 @@ package repository
 import (
 	"log/slog"
 
+	"gororoba/domain"
+	"gororoba/model"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
-	"github.com/dbiagi/gororoba/src/domain"
-	"github.com/dbiagi/gororoba/src/model"
 )
 
 const (
@@ -43,14 +44,14 @@ func (r RecipeRepository) GetRecipesByCategory(category string) []domain.Recipe 
 
 	if err != nil {
 		slog.Error("Error querying for recipes by category", slog.String("error", err.Error()))
-		return nil
+		return []domain.Recipe{}
 	}
 
 	var recipes []domain.Recipe
 	err = dynamodbattribute.UnmarshalListOfMaps(result.Items, &recipes)
 	if err != nil {
 		slog.Error("Error unmarshalling query result", slog.String("error", err.Error()))
-		return nil
+		return []domain.Recipe{}
 	}
 
 	return recipes
@@ -81,3 +82,5 @@ func (r RecipeRepository) CreateRecipe(recipe model.RecipeModel) *domain.Error {
 
 	return nil
 }
+
+//go:generate mockgen -destination=./../testdata/mocks/recipe_repository_mock.go gororoba/repository  RecipeRepositoryInterface

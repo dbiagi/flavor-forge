@@ -1,9 +1,9 @@
-package fixtures_test
+package testdata_fixtures
 
 import (
 	"time"
 
-	"github.com/dbiagi/gororoba/src/domain"
+	"gororoba/domain"
 )
 
 func GetRecipesWithCategory(category string) []domain.Recipe {

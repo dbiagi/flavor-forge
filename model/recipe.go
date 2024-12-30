@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/dbiagi/gororoba/src/domain"
+	"gororoba/domain"
 	"time"
 )
 

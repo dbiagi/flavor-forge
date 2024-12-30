@@ -83,7 +83,7 @@ func loadFromFile(env string) map[string]string {
 	configs, err := godotenv.Read(configFilePath)
 
 	if err != nil {
-		slog.Error("Error loading .env file: %v\n", err)
+		slog.Error("Error loading .env file: %v\n", slog.String("error", err.Error()))
 		panic(err)
 	}
 

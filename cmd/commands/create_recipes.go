@@ -3,13 +3,14 @@ package commands
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/dbiagi/gororoba/src/config"
-	"github.com/dbiagi/gororoba/src/domain"
-	"github.com/dbiagi/gororoba/src/handler"
-	"github.com/dbiagi/gororoba/src/repository"
-	"github.com/spf13/cobra"
+	"gororoba/config"
+	"gororoba/domain"
+	"gororoba/handler"
+	"gororoba/repository"
 	"log/slog"
 	"os"
+
+	"github.com/spf13/cobra"
 )
 
 type cobraCommand func(*cobra.Command, []string)

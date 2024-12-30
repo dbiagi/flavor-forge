@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"github.com/dbiagi/gororoba/src/handler"
+	"gororoba/handler"
 	"net/http"
 )
 

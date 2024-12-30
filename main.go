@@ -9,27 +9,29 @@ import (
 	"os/signal"
 	"time"
 
+	"gororoba/config"
+	"gororoba/controller"
+	"gororoba/handler"
+	"gororoba/repository"
+
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"github.com/dbiagi/gororoba/src/config"
-	"github.com/dbiagi/gororoba/src/controller"
-	"github.com/dbiagi/gororoba/src/handler"
-	"github.com/dbiagi/gororoba/src/repository"
 	"github.com/gorilla/mux"
 )
 
-type Controllers struct {
+type controllers struct {
 	controller.HealthCheckController
 	controller.RecipesController
 }
 
 func main() {
 	startTime := time.Now()
-	appEnv := os.Args[1]
-	if appEnv == "" {
-		appEnv = config.DevelopmentEnv
+
+	env := os.Args[1]
+	if env == "" {
+		env = config.DevelopmentEnv
 	}
 
-	appConfig := config.LoadConfig(appEnv)
+	appConfig := config.LoadConfig(env)
 
 	config.ConfigureLogger(appConfig.AppConfig)
 
@@ -64,7 +66,7 @@ func connectToDynamoDB(awsConfig config.AWSConfig) *dynamodb.DynamoDB {
 func createServer(webConfig config.WebConfig) (*http.Server, *mux.Router) {
 	router := mux.NewRouter()
 	srv := &http.Server{
-		Addr:         ":" + os.Getenv("PORT"),
+		Addr:         ":" + webConfig.Port,
 		Handler:      router,
 		IdleTimeout:  webConfig.IdleTimeout,
 		ReadTimeout:  webConfig.ReadTimeout,
@@ -81,18 +83,18 @@ func createServer(webConfig config.WebConfig) (*http.Server, *mux.Router) {
 	return srv, router
 }
 
-func createControllers(db *dynamodb.DynamoDB) Controllers {
+func createControllers(db *dynamodb.DynamoDB) controllers {
 	recipeRepository := repository.NewRecipeRepository(db)
 	healthCheckHandler := handler.NewHealthCheckHandler()
 	recipeHandler := handler.NewRecipesHandler(recipeRepository)
 
-	return Controllers{
+	return controllers{
 		RecipesController:     controller.NewRecipesController(recipeHandler),
 		HealthCheckController: controller.NewHealthCheckController(healthCheckHandler),
 	}
 }
 
-func registerRoutesAndServe(router *mux.Router, controllers Controllers) {
+func registerRoutesAndServe(router *mux.Router, controllers controllers) {
 	router.Use(config.TraceIdMiddleware)
 	router.HandleFunc("/health", controller.HandleRequest(controllers.HealthCheckController.Check)).Methods("GET")
 	router.HandleFunc("/health/complete", controller.HandleRequest(controllers.HealthCheckController.CheckComplete)).Methods("GET")

@@ -3,9 +3,10 @@ package handler
 import (
 	"time"
 
-	"github.com/dbiagi/gororoba/src/converter"
-	"github.com/dbiagi/gororoba/src/domain"
-	"github.com/dbiagi/gororoba/src/repository"
+	"gororoba/converter"
+	"gororoba/domain"
+	"gororoba/repository"
+
 	"github.com/google/uuid"
 )
 
