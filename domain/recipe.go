@@ -6,6 +6,13 @@ import (
 
 type RecipeCategory string
 
+const (
+	RecipeCategoryBreakfast  RecipeCategory = "breakfast"
+	RecipeCategoryMainCourse RecipeCategory = "main_course"
+	RecipeCategorySnack      RecipeCategory = "snack"
+	RecipeCategoryDessert    RecipeCategory = "dessert"
+)
+
 // PK = Category, SK = Id#UpdatedAt
 // GSI = Id
 // GSI = Slug

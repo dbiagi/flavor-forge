@@ -83,4 +83,4 @@ func (r RecipeRepository) CreateRecipe(recipe model.RecipeModel) *domain.Error {
 	return nil
 }
 
-//go:generate mockgen -destination=./../testdata/mocks/recipe_repository_mock.go gororoba/repository  RecipeRepositoryInterface
+//go:generate mockgen -destination=./../testdata/mocks/recipe_repository_mock.go -package=mocks gororoba/repository  RecipeRepositoryInterface

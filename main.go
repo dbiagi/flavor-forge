@@ -86,7 +86,8 @@ func createServer(webConfig config.WebConfig) (*http.Server, *mux.Router) {
 func createControllers(db *dynamodb.DynamoDB) controllers {
 	recipeRepository := repository.NewRecipeRepository(db)
 	healthCheckHandler := handler.NewHealthCheckHandler()
-	recipeHandler := handler.NewRecipesHandler(recipeRepository)
+	suggestionHandler := handler.NewSuggestionHandler()
+	recipeHandler := handler.NewRecipesHandler(recipeRepository, suggestionHandler)
 
 	return controllers{
 		RecipesController:     controller.NewRecipesController(recipeHandler),
@@ -98,7 +99,8 @@ func registerRoutesAndServe(router *mux.Router, controllers controllers) {
 	router.Use(config.TraceIdMiddleware)
 	router.HandleFunc("/health", controller.HandleRequest(controllers.HealthCheckController.Check)).Methods("GET")
 	router.HandleFunc("/health/complete", controller.HandleRequest(controllers.HealthCheckController.CheckComplete)).Methods("GET")
-	router.HandleFunc("/recipes", controller.HandleRequest(controllers.RecipesController.GetRecipes)).Methods("GET")
+	router.HandleFunc("/recipes/by-category", controller.HandleRequest(controllers.RecipesController.GetRecipesByCategory)).Methods("GET")
+	router.HandleFunc("/recipes/suggestion", controller.HandleRequest(controllers.RecipesController.GetSuggestion)).Methods("GET")
 }
 
 func configureGracefullShutdown(server *http.Server, webConfig config.WebConfig) {

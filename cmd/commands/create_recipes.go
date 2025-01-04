@@ -34,7 +34,7 @@ func command(c config.AWSConfig) cobraCommand {
 			return
 		}
 		r := repository.NewRecipeRepository(dynamoDb)
-		h := handler.NewRecipesHandler(r)
+		h := handler.NewRecipesHandler(r, nil)
 
 		jsonFile := args[0]
 

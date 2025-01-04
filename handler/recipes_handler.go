@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"math/rand/v2"
 	"time"
 
 	"gororoba/converter"
@@ -13,18 +14,34 @@ import (
 type RecipesHandlerInterface interface {
 	GetRecipesByCategory(category string) []domain.Recipe
 	CreateRecipe(r *domain.Recipe) *domain.Recipe
+	GetSuggestion(suggestionRequestedAt time.Time) domain.Recipe
 }
 
 type RecipesHandler struct {
-	RecipeRepository repository.RecipeRepositoryInterface
+	RecipeRepository  repository.RecipeRepositoryInterface
+	SuggestionHandler SuggestionHandlerInterface
 }
 
-func NewRecipesHandler(r repository.RecipeRepositoryInterface) RecipesHandler {
-	return RecipesHandler{RecipeRepository: r}
+func NewRecipesHandler(r repository.RecipeRepositoryInterface, sh SuggestionHandlerInterface) RecipesHandler {
+	return RecipesHandler{
+		RecipeRepository:  r,
+		SuggestionHandler: sh,
+	}
 }
 
 func (h RecipesHandler) GetRecipesByCategory(category string) []domain.Recipe {
 	return h.RecipeRepository.GetRecipesByCategory(category)
+}
+
+func (h RecipesHandler) GetSuggestion(suggestionRequestedAt time.Time) domain.Recipe {
+	suggestedCategory := h.SuggestionHandler.GetSuggestedCategoryByTime(suggestionRequestedAt)
+
+	recipes := h.RecipeRepository.GetRecipesByCategory(suggestedCategory)
+
+	len := len(recipes)
+	i := rand.IntN(len - 1)
+
+	return recipes[i]
 }
 
 func (h RecipesHandler) CreateRecipe(r *domain.Recipe) *domain.Recipe {
