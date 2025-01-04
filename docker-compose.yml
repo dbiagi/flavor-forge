@@ -10,3 +10,8 @@ services:
       - SERVICES=dynamodb
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
+    volumes: 
+      - "dynamodb_data:/tmp/localstack/data"
+
+volumes:
+  dynamodb_data: {}
