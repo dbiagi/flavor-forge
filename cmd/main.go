@@ -8,11 +8,13 @@ import (
 )
 
 func main() {
-	appConfig := config.LoadConfig("development")
-	config.ConfigureLogger(appConfig.AppConfig)
+	env := config.DevelopmentEnv
 
 	rootCmd := rootCmd()
-	rootCmd.AddCommand(commands.NewCreateRecipesCommand(appConfig.AWSConfig))
+	rootCmd.PersistentFlags().StringVarP(&env, "env", "e", "development", "Environment to run the application")
+	rootCmd.Root().MarkPersistentFlagRequired("env")
+	rootCmd.AddCommand(commands.NewCreateRecipesCommand())
+	rootCmd.AddCommand(commands.NewServeCommand())
 	rootCmd.Execute()
 }
 
