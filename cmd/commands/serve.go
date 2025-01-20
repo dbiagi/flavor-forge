@@ -1,4 +1,4 @@
-package main
+package commands
 
 import (
 	"context"
@@ -9,48 +9,57 @@ import (
 	"os/signal"
 	"time"
 
+	"github.com/gorilla/mux"
+	"github.com/spf13/cobra"
+
 	"gororoba/config"
 	"gororoba/controller"
 	"gororoba/handler"
 	"gororoba/repository"
 
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"github.com/gorilla/mux"
 )
 
-type controllers struct {
-	controller.HealthCheckController
-	controller.RecipesController
-}
-
-func main() {
-	startTime := time.Now()
-
-	env := os.Args[1]
-	if env == "" {
-		env = config.DevelopmentEnv
+func NewServeCommand() *cobra.Command {
+	cmd := &cobra.Command{
+		Use: "serve",
+		Run: runServeCommand(),
 	}
 
-	appConfig := config.LoadConfig(env)
+	return cmd
+}
 
-	config.ConfigureLogger(appConfig.AppConfig)
+func runServeCommand() CommandFunction {
+	return func(cmd *cobra.Command, args []string) {
+		startTime := time.Now()
 
-	slog.Info("Connecting to dynamoDB ....")
-	dynamoDB := connectToDynamoDB(appConfig.AWSConfig)
+		env, _ := cmd.Flags().GetString("env")
+		if env == "" {
+			env = config.DevelopmentEnv
+		}
 
-	slog.Info("Starting server ....")
-	srv, router := createServer(appConfig.WebConfig)
+		slog.Info("Environment: " + env)
+		appConfig := config.LoadConfig(env)
 
-	slog.Info("Creating resources ....")
-	appResources := createControllers(dynamoDB)
+		config.ConfigureLogger(appConfig.AppConfig)
 
-	slog.Info("Registering routes and serving ....")
-	registerRoutesAndServe(router, appResources)
+		slog.Info("Connecting to dynamoDB ....")
+		dynamoDB := connectToDynamoDB(appConfig.AWSConfig)
 
-	slog.Info(fmt.Sprintf("Application ready. Time elapsed: %v", time.Since(startTime)))
+		slog.Info("Starting server ....")
+		srv, router := createServer(appConfig.WebConfig)
 
-	slog.Info("Configuring graceful shutdown.")
-	configureGracefullShutdown(srv, appConfig.WebConfig)
+		slog.Info("Creating resources ....")
+		appResources := createControllers(dynamoDB)
+
+		slog.Info("Registering routes and serving ....")
+		registerRoutesAndServe(router, appResources)
+
+		slog.Info(fmt.Sprintf("Application ready. Time elapsed: %v", time.Since(startTime)))
+
+		slog.Info("Configuring graceful shutdown.")
+		configureGracefullShutdown(srv, appConfig.WebConfig)
+	}
 }
 
 func connectToDynamoDB(awsConfig config.AWSConfig) *dynamodb.DynamoDB {
@@ -83,19 +92,19 @@ func createServer(webConfig config.WebConfig) (*http.Server, *mux.Router) {
 	return srv, router
 }
 
-func createControllers(db *dynamodb.DynamoDB) controllers {
+func createControllers(db *dynamodb.DynamoDB) Controllers {
 	recipeRepository := repository.NewRecipeRepository(db)
 	healthCheckHandler := handler.NewHealthCheckHandler()
 	suggestionHandler := handler.NewSuggestionHandler()
 	recipeHandler := handler.NewRecipesHandler(recipeRepository, suggestionHandler)
 
-	return controllers{
+	return Controllers{
 		RecipesController:     controller.NewRecipesController(recipeHandler),
 		HealthCheckController: controller.NewHealthCheckController(healthCheckHandler),
 	}
 }
 
-func registerRoutesAndServe(router *mux.Router, controllers controllers) {
+func registerRoutesAndServe(router *mux.Router, controllers Controllers) {
 	router.Use(config.TraceIdMiddleware)
 	router.HandleFunc("/health", controller.HandleRequest(controllers.HealthCheckController.Check)).Methods("GET")
 	router.HandleFunc("/health/complete", controller.HandleRequest(controllers.HealthCheckController.CheckComplete)).Methods("GET")

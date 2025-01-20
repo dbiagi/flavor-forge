@@ -13,21 +13,23 @@ import (
 	"github.com/spf13/cobra"
 )
 
-type cobraCommand func(*cobra.Command, []string)
-
-func NewCreateRecipesCommand(c config.AWSConfig) *cobra.Command {
+func NewCreateRecipesCommand() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:       "create-recipes",
-		Run:       command(c),
+		Run:       runCreateRecipeCommand(),
 		ValidArgs: []string{"file-path"},
 	}
 
 	return cmd
 }
 
-func command(c config.AWSConfig) cobraCommand {
+func runCreateRecipeCommand() func(cmd *cobra.Command, args []string) {
 	return func(cmd *cobra.Command, args []string) {
-		dynamoDb, dynamoConnectError := config.CreateDynamoDBConnection(c)
+		env, _ := cmd.Flags().GetString("env")
+		appConfig := config.LoadConfig(env)
+		config.ConfigureLogger(appConfig.AppConfig)
+
+		dynamoDb, dynamoConnectError := config.CreateDynamoDBConnection(appConfig.AWSConfig)
 
 		if dynamoConnectError != nil {
 			slog.Error(fmt.Sprintf("Failed to run command %v.", dynamoConnectError))

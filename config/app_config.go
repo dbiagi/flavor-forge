@@ -11,8 +11,8 @@ import (
 
 const (
 	AppName        = "gororoba"
-	DevelopmentEnv = "development"
-	ProductionEnv  = "production"
+	DevelopmentEnv = "dev"
+	ProductionEnv  = "prod"
 )
 
 type Configuration struct {
@@ -78,12 +78,12 @@ func LoadConfig(env string) Configuration {
 
 func loadFromFile(env string) map[string]string {
 	path, _ := os.Getwd()
-	configFilePath := fmt.Sprintf("%s/.%s.env", path, env)
+	configFilePath := fmt.Sprintf("%s/../.%s.env", path, env)
 
 	configs, err := godotenv.Read(configFilePath)
 
 	if err != nil {
-		slog.Error("Error loading .env file: %v\n", slog.String("error", err.Error()))
+		slog.Error("Error loading .env file.", slog.String("error", err.Error()))
 		panic(err)
 	}
 
