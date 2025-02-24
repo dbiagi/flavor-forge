@@ -1,11 +1,11 @@
 package tests
 
 import (
-	api "gororoba/internal"
+	server "gororoba/internal"
 	"gororoba/internal/config"
 )
 
-func StartTestServer() {
+func NewTestServer() server.AppServer {
 	appConfig := config.Configuration{
 		AppConfig: config.AppConfig{
 			Name:        "gororoba test",
@@ -13,11 +13,12 @@ func StartTestServer() {
 			Environment: "test",
 		},
 		WebConfig: config.WebConfig{
-			Port:            8080,
-			IdleTimeout:     10,
-			ReadTimeout:     10,
-			WriteTimeout:    10,
-			ShutdownTimeout: 10,
+			Port:                     8080,
+			IdleTimeout:              10,
+			ReadTimeout:              10,
+			WriteTimeout:             10,
+			ShutdownTimeout:          10,
+			GracefulShutdownDisabled: true,
 		},
 		AWSConfig: config.AWSConfig{
 			Region: "us-east-1",
@@ -26,5 +27,6 @@ func StartTestServer() {
 			},
 		},
 	}
-	api.Start(appConfig)
+
+	return server.NewAppServer(appConfig)
 }

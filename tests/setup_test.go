@@ -3,6 +3,7 @@ package tests
 import (
 	"context"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/require"
 	tc "github.com/testcontainers/testcontainers-go/modules/compose"
@@ -20,18 +21,22 @@ func TestSetup(t *testing.T) {
 	compose, err := tc.NewDockerComposeWith(files, identifier)
 	require.NoError(t, err, "Failed to create docker-compose")
 
-	t.Cleanup(func() {
-		require.NoError(t, compose.Down(context.Background()), tc.RemoveOrphans(true), tc.RemoveImagesLocal, "Failed to stop compose")
-	})
-
 	ctx, cancel := context.WithCancel(context.Background())
 	t.Cleanup(cancel)
 
+	waitStrategy := wait.ForListeningPort("4566").WithStartupTimeout(30 * time.Second)
 	err = compose.
-		WaitForService("localstack", wait.ForExposedPort().WithStartupTimeout(30)).
+		WaitForService("localstack", waitStrategy).
 		Up(ctx, tc.Wait(true))
 
 	require.NoError(t, err, "Failed to start services")
 
-	StartTestServer()
+	srv := NewTestServer()
+
+	t.Cleanup(func() {
+		require.NoError(t, compose.Down(context.Background()), tc.RemoveOrphans(true), tc.RemoveImagesLocal, "Failed to stop compose")
+		srv.ForceShutdown()
+	})
+
+	srv.Start()
 }

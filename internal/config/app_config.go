@@ -29,11 +29,12 @@ type AppConfig struct {
 }
 
 type WebConfig struct {
-	Port            int
-	IdleTimeout     time.Duration
-	ReadTimeout     time.Duration
-	WriteTimeout    time.Duration
-	ShutdownTimeout time.Duration
+	Port                     int
+	IdleTimeout              time.Duration
+	ReadTimeout              time.Duration
+	WriteTimeout             time.Duration
+	ShutdownTimeout          time.Duration
+	GracefulShutdownDisabled bool
 }
 
 type AWSConfig struct {

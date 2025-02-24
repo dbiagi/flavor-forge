@@ -5,7 +5,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	api "gororoba/internal"
+	server "gororoba/internal"
 	"gororoba/internal/config"
 )
 
@@ -28,6 +28,7 @@ func runServeCommand() CommandFunction {
 		slog.Info("Environment: " + env)
 		appConfig := config.LoadConfig(env)
 
-		api.Start(appConfig)
+		srv := server.NewAppServer(appConfig)
+		srv.Start()
 	}
 }

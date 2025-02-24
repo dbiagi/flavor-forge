@@ -19,20 +19,34 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 )
 
-type Controllers struct {
+type controllers struct {
 	controller.HealthCheckController
 	controller.RecipesController
 }
 
-func Start(appConfig config.Configuration) {
+type AppServer struct {
+	config.Configuration
+	*http.Server
+	*mux.Router
+}
+
+func NewAppServer(appConfig config.Configuration) AppServer {
+	return AppServer{
+		Configuration: appConfig,
+	}
+}
+
+func (s *AppServer) Start() {
 	startTime := time.Now()
-	config.ConfigureLogger(appConfig.AppConfig)
+	config.ConfigureLogger(s.Configuration.AppConfig)
 
 	slog.Info("Connecting to dynamoDB ....")
-	dynamoDB := connectToDynamoDB(appConfig.AWSConfig)
+	dynamoDB := connectToDynamoDB(s.Configuration.AWSConfig)
 
 	slog.Info("Starting server ....")
-	srv, router := createServer(appConfig.WebConfig)
+	srv, router := createServer(s.Configuration.WebConfig)
+	s.Server = srv
+	s.Router = router
 
 	slog.Info("Creating resources ....")
 	appResources := createControllers(dynamoDB)
@@ -42,8 +56,9 @@ func Start(appConfig config.Configuration) {
 
 	slog.Info(fmt.Sprintf("Application ready. Time elapsed: %v", time.Since(startTime)))
 
-	slog.Info("Configuring graceful shutdown.")
-	configureGracefullShutdown(srv, appConfig.WebConfig)
+	if !s.Configuration.WebConfig.GracefulShutdownDisabled {
+		configureGracefullShutdown(srv, s.Configuration.WebConfig)
+	}
 }
 
 func connectToDynamoDB(awsConfig config.AWSConfig) *dynamodb.DynamoDB {
@@ -76,19 +91,19 @@ func createServer(webConfig config.WebConfig) (*http.Server, *mux.Router) {
 	return srv, router
 }
 
-func createControllers(db *dynamodb.DynamoDB) Controllers {
+func createControllers(db *dynamodb.DynamoDB) controllers {
 	recipeRepository := repository.NewRecipeRepository(db)
 	healthCheckHandler := handler.NewHealthCheckHandler()
 	suggestionHandler := handler.NewSuggestionHandler()
 	recipeHandler := handler.NewRecipesHandler(recipeRepository, suggestionHandler)
 
-	return Controllers{
+	return controllers{
 		RecipesController:     controller.NewRecipesController(recipeHandler),
 		HealthCheckController: controller.NewHealthCheckController(healthCheckHandler),
 	}
 }
 
-func registerRoutesAndServe(router *mux.Router, controllers Controllers) {
+func registerRoutesAndServe(router *mux.Router, controllers controllers) {
 	router.Use(config.TraceIdMiddleware)
 	router.HandleFunc("/health", controller.HandleRequest(controllers.HealthCheckController.Check)).Methods("GET")
 	router.HandleFunc("/health/complete", controller.HandleRequest(controllers.HealthCheckController.CheckComplete)).Methods("GET")
@@ -97,6 +112,8 @@ func registerRoutesAndServe(router *mux.Router, controllers Controllers) {
 }
 
 func configureGracefullShutdown(server *http.Server, webConfig config.WebConfig) {
+	slog.Info("Configuring graceful shutdown.")
+
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	<-c
@@ -107,4 +124,8 @@ func configureGracefullShutdown(server *http.Server, webConfig config.WebConfig)
 	server.Shutdown(ctx)
 	slog.Info("Shutting down server")
 	os.Exit(0)
+}
+
+func (s *AppServer) ForceShutdown() {
+	s.Server.Shutdown(context.Background())
 }
