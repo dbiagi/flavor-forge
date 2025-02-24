@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/joho/godotenv"
@@ -28,11 +29,12 @@ type AppConfig struct {
 }
 
 type WebConfig struct {
-	Port            string
-	IdleTimeout     time.Duration
-	ReadTimeout     time.Duration
-	WriteTimeout    time.Duration
-	ShutdownTimeout time.Duration
+	Port                     int
+	IdleTimeout              time.Duration
+	ReadTimeout              time.Duration
+	WriteTimeout             time.Duration
+	ShutdownTimeout          time.Duration
+	GracefulShutdownDisabled bool
 }
 
 type AWSConfig struct {
@@ -53,10 +55,11 @@ type DynamoDBConfig struct {
 
 func LoadConfig(env string) Configuration {
 	configs := loadFromFile(env)
+	port, _ := strconv.Atoi(configs["PORT"])
 
 	return Configuration{
 		WebConfig: WebConfig{
-			Port:            configs["PORT"],
+			Port:            port,
 			IdleTimeout:     time.Second * 10,
 			ReadTimeout:     time.Second * 10,
 			WriteTimeout:    time.Second * 10,
@@ -78,7 +81,7 @@ func LoadConfig(env string) Configuration {
 
 func loadFromFile(env string) map[string]string {
 	path, _ := os.Getwd()
-	configFilePath := fmt.Sprintf("%s/../.%s.env", path, env)
+	configFilePath := fmt.Sprintf("%s/.%s.env", path, env)
 
 	configs, err := godotenv.Read(configFilePath)
 
