@@ -43,3 +43,13 @@ infra-up:
 infra-down:
 	@echo "Stopping infrastructure..."
 	${DOCKER_COMPOSE} down
+
+.PHONY: build
+build:
+	@echo "Building..."
+	${GOEXEC} build -o bin/app cmd/server/main.go
+
+.PHONY: run
+run:
+	@echo "Running..."
+	${GOEXEC} run cmd/server/main.go serve --env=dev
