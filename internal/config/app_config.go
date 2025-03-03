@@ -81,7 +81,7 @@ func LoadConfig(env string) Configuration {
 
 func loadFromFile(env string) map[string]string {
 	path, _ := os.Getwd()
-	configFilePath := fmt.Sprintf("%s/.%s.env", path, env)
+	configFilePath := fmt.Sprintf("%s/../.env", path)
 
 	configs, err := godotenv.Read(configFilePath)
 
