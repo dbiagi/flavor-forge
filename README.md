@@ -1,13 +1,41 @@
-# gororoba
+# The Flavor Forge
 
-Welcome to The Flavor Forge, your personal culinary workshop! 
-This app is designed to inspire your kitchen creativity by providing a dynamic platform for discovering, creating, and sharing unique recipes. 
-Whether you're a seasoned chef or a kitchen novice, The Flavor Forge empowers you to forge your own path to deliciousness.
+## About
 
-## TODO
+The Flavor Forge is a recipe discovery rest API that transforms your kitchen into a hub of culinary innovation. 
+Dive into a vast collection of diverse recipes, or unleash your inner chef by crafting and sharing your own.
 
-- Criar script para alimentar a primeira carga no banco
-- Listar receitas
-- Endpoint para adicionar receita
-- Endpoint para modificar receita
-- Endpoint para remover receita
+This project was created to study golang in a real life app. Its goals is to move beyond the basics and show more advanced programming techniques we see in an interprese rest API.
+
+Its is still a work in progress. 
+
+## Key Features:
+
+* **Recipe Discovery:** Explore a wide range of recipes, from classic favorites to experimental creations.
+* **Recipe Creation:** Easily document and share your own culinary masterpieces. **(WIP)**
+* **Customization:** Adapt existing recipes to suit your tastes and dietary needs. **(WIP)**
+
+## Getting Started
+
+### Start the infrastructure
+
+```bash
+make infra-up
+```
+
+```bash
+make build
+```
+
+### Start the http server
+```bash
+./bin/app serve --env dev
+```
+
+## Contributing
+
+WIP
+
+## License
+
+MIT
