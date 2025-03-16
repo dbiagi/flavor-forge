@@ -54,7 +54,7 @@ type DynamoDBConfig struct {
 }
 
 func LoadConfig(env string) Configuration {
-	configs := loadFromFile(env)
+	configs := loadFromFile()
 	port, _ := strconv.Atoi(configs["PORT"])
 
 	return Configuration{
@@ -79,9 +79,9 @@ func LoadConfig(env string) Configuration {
 	}
 }
 
-func loadFromFile(env string) map[string]string {
+func loadFromFile() map[string]string {
 	path, _ := os.Getwd()
-	configFilePath := fmt.Sprintf("%s/../.env", path)
+	configFilePath := fmt.Sprintf("%s/.env", path)
 
 	configs, err := godotenv.Read(configFilePath)
 
