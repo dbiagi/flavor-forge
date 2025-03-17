@@ -62,7 +62,7 @@ func (s *AppServer) Start() {
 	appResources := createControllers(dynamoDB)
 
 	slog.Info("Registering routes and serving ....")
-	registerRoutesAndServe(router, appResources)
+	registerRoutesAndMiddlewares(router, appResources)
 
 	slog.Info(fmt.Sprintf("Application ready. Time elapsed: %v", time.Since(startTime)))
 
@@ -113,7 +113,7 @@ func createControllers(db *dynamodb.DynamoDB) controllers {
 	}
 }
 
-func registerRoutesAndServe(router *mux.Router, controllers controllers) {
+func registerRoutesAndMiddlewares(router *mux.Router, controllers controllers) {
 	router.Use(config.TraceIdMiddleware)
 	router.Use(mux.CORSMethodMiddleware(router))
 	router.HandleFunc("/health", utils.HandleRequest(controllers.HealthCheckController.Check)).Methods("GET")

@@ -1,0 +1,3005 @@
+{
+  "Recipe": [
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "9e554be3-dfe6-4f99-ba56-7fc55c427c7e"
+          },
+          "title": {
+            "S": "Chocolate Chip Cookies"
+          },
+          "description": {
+            "S": "Classic homemade chocolate chip cookies."
+          },
+          "servings": {
+            "N": "24"
+          },
+          "prepTime": {
+            "N": "20"
+          },
+          "slug": {
+            "S": "chocolate-chip-cookies"
+          },
+          "createdAt": {
+            "S": "2023-11-01T12:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-01T12:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "butter"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "sugar"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "brown sugar"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "vanilla extract"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "eggs"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "flour"
+                  },
+                  "quantity": {
+                    "S": "3"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "baking soda"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "baking powder"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "salt"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "chocolate chips"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "dessert"
+          },
+          "id#updatedAt": {
+            "S": "9e554be3-dfe6-4f99-ba56-7fc55c427c7e#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "f882f84a-cfa5-4833-a9c2-c47e459e6136"
+          },
+          "title": {
+            "S": "Spaghetti Aglio e Olio"
+          },
+          "description": {
+            "S": "Traditional Italian pasta with garlic and olive oil."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "15"
+          },
+          "slug": {
+            "S": "spaghetti-aglio-e-olio"
+          },
+          "createdAt": {
+            "S": "2023-11-01T13:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-01T13:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "spaghetti"
+                  },
+                  "quantity": {
+                    "S": "400"
+                  },
+                  "measureUnit": {
+                    "S": "g"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "olive oil"
+                  },
+                  "quantity": {
+                    "S": "0.33"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "garlic"
+                  },
+                  "quantity": {
+                    "S": "4"
+                  },
+                  "measureUnit": {
+                    "S": "cloves"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "red pepper flakes"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "salt"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "parsley"
+                  },
+                  "quantity": {
+                    "S": "0.25"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "Parmesan cheese"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "main_course"
+          },
+          "id#updatedAt": {
+            "S": "f882f84a-cfa5-4833-a9c2-c47e459e6136#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "ec48b6d9-d9af-43d2-a5ce-46046c0be488"
+          },
+          "title": {
+            "S": "Chicken Alfredo"
+          },
+          "description": {
+            "S": "Creamy chicken pasta with Alfredo sauce."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "30"
+          },
+          "slug": {
+            "S": "chicken-alfredo"
+          },
+          "createdAt": {
+            "S": "2023-11-01T14:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-01T14:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "chicken breast"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "fettuccine"
+                  },
+                  "quantity": {
+                    "S": "400"
+                  },
+                  "measureUnit": {
+                    "S": "g"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "butter"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "garlic"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "cloves"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "heavy cream"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "Parmesan cheese"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "black pepper"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "salt"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "main_course"
+          },
+          "id#updatedAt": {
+            "S": "ec48b6d9-d9af-43d2-a5ce-46046c0be488#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "a5c91193-4c3b-40cb-ac3a-34b2a344a3bc"
+          },
+          "title": {
+            "S": "Caesar Salad"
+          },
+          "description": {
+            "S": "Crispy romaine lettuce tossed in Caesar dressing."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "15"
+          },
+          "slug": {
+            "S": "caesar-salad"
+          },
+          "createdAt": {
+            "S": "2023-11-01T15:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-01T15:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "romaine lettuce"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "heads"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "Caesar dressing"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "Parmesan cheese"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "croutons"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "black pepper"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "salad"
+          },
+          "id#updatedAt": {
+            "S": "a5c91193-4c3b-40cb-ac3a-34b2a344a3bc#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "fbdb4b47-f72d-48ef-94a9-47e027a5e633"
+          },
+          "title": {
+            "S": "Tacos"
+          },
+          "description": {
+            "S": "Delicious traditional Mexican tacos."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "20"
+          },
+          "slug": {
+            "S": "tacos"
+          },
+          "createdAt": {
+            "S": "2023-11-01T16:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-01T16:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "taco shells"
+                  },
+                  "quantity": {
+                    "S": "8"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "ground beef"
+                  },
+                  "quantity": {
+                    "S": "500"
+                  },
+                  "measureUnit": {
+                    "S": "g"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "onion"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "taco seasoning"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "packet"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "lettuce"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "head"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "tomato"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "cheddar cheese"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "main_course"
+          },
+          "id#updatedAt": {
+            "S": "fbdb4b47-f72d-48ef-94a9-47e027a5e633#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "97f8a724-a83f-46a6-a3fe-4c44d944ef88"
+          },
+          "title": {
+            "S": "Beef Stew"
+          },
+          "description": {
+            "S": "Hearty beef stew with carrots and potatoes."
+          },
+          "servings": {
+            "N": "6"
+          },
+          "prepTime": {
+            "N": "120"
+          },
+          "slug": {
+            "S": "beef-stew"
+          },
+          "createdAt": {
+            "S": "2023-11-01T17:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-01T17:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "beef chuck"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "kg"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "carrots"
+                  },
+                  "quantity": {
+                    "S": "4"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "potatoes"
+                  },
+                  "quantity": {
+                    "S": "4"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "onion"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "beef broth"
+                  },
+                  "quantity": {
+                    "S": "4"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "tomato paste"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "bay leaf"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "salt"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "black pepper"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "main_course"
+          },
+          "id#updatedAt": {
+            "S": "97f8a724-a83f-46a6-a3fe-4c44d944ef88#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "7495d299-5778-44e5-8500-8d54294ef9ec"
+          },
+          "title": {
+            "S": "Pancakes"
+          },
+          "description": {
+            "S": "Fluffy pancakes for breakfast."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "20"
+          },
+          "slug": {
+            "S": "pancakes"
+          },
+          "createdAt": {
+            "S": "2023-11-01T18:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-01T18:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "flour"
+                  },
+                  "quantity": {
+                    "S": "1.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "milk"
+                  },
+                  "quantity": {
+                    "S": "1.25"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "egg"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "butter"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "baking powder"
+                  },
+                  "quantity": {
+                    "S": "3.5"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "salt"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "sugar"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "breakfast"
+          },
+          "id#updatedAt": {
+            "S": "7495d299-5778-44e5-8500-8d54294ef9ec#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "bb4051e8-90a5-4d9e-a95e-fda7c59897f8"
+          },
+          "title": {
+            "S": "Vegetable Stir Fry"
+          },
+          "description": {
+            "S": "Quick and easy vegetable stir fry."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "15"
+          },
+          "slug": {
+            "S": "vegetable-stir-fry"
+          },
+          "createdAt": {
+            "S": "2023-11-01T19:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-01T19:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "broccoli"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "carrots"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "bell pepper"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "soy sauce"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "ginger"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "garlic"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "cloves"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "sesame oil"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "main_course"
+          },
+          "id#updatedAt": {
+            "S": "bb4051e8-90a5-4d9e-a95e-fda7c59897f8#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "8705bc13-25ec-4d2d-a1f5-3a03d03d53bd"
+          },
+          "title": {
+            "S": "Margarita Pizza"
+          },
+          "description": {
+            "S": "Simple and delicious margarita pizza."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "30"
+          },
+          "slug": {
+            "S": "margarita-pizza"
+          },
+          "createdAt": {
+            "S": "2023-11-01T20:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-01T20:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "pizza dough"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "tomato sauce"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "mozzarella cheese"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "basil"
+                  },
+                  "quantity": {
+                    "S": "0.25"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "olive oil"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "main_course"
+          },
+          "id#updatedAt": {
+            "S": "8705bc13-25ec-4d2d-a1f5-3a03d03d53bd#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "9f28285e-2dcc-4c2a-bcc9-365a41d2152d"
+          },
+          "title": {
+            "S": "Lemon Drizzle Cake"
+          },
+          "description": {
+            "S": "Moist and tangy lemon drizzle cake."
+          },
+          "servings": {
+            "N": "8"
+          },
+          "prepTime": {
+            "N": "45"
+          },
+          "slug": {
+            "S": "lemon-drizzle-cake"
+          },
+          "createdAt": {
+            "S": "2023-11-01T21:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-01T21:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "butter"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "sugar"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "eggs"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "flour"
+                  },
+                  "quantity": {
+                    "S": "1.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "baking powder"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "lemon zest"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "lemon juice"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "dessert"
+          },
+          "id#updatedAt": {
+            "S": "9f28285e-2dcc-4c2a-bcc9-365a41d2152d#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "c90ff6b7-27b1-4a10-af97-c5d7b287d95a"
+          },
+          "title": {
+            "S": "Chicken Curry"
+          },
+          "description": {
+            "S": "Aromatic Indian chicken curry."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "40"
+          },
+          "slug": {
+            "S": "chicken-curry"
+          },
+          "createdAt": {
+            "S": "2023-11-02T10:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T10:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "chicken"
+                  },
+                  "quantity": {
+                    "S": "500"
+                  },
+                  "measureUnit": {
+                    "S": "g"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "onions"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "ginger garlic paste"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "curry powder"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "coconut milk"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "tomatoes"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "salt"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "cilantro"
+                  },
+                  "quantity": {
+                    "S": "0.25"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "main_course"
+          },
+          "id#updatedAt": {
+            "S": "c90ff6b7-27b1-4a10-af97-c5d7b287d95a#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "0c3ccdd8-4d94-47b6-8e60-a24c51575bcd"
+          },
+          "title": {
+            "S": "French Omelette"
+          },
+          "description": {
+            "S": "A classic French omelette with a soft center."
+          },
+          "servings": {
+            "N": "1"
+          },
+          "prepTime": {
+            "N": "10"
+          },
+          "slug": {
+            "S": "french-omelette"
+          },
+          "createdAt": {
+            "S": "2023-11-02T11:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T11:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "eggs"
+                  },
+                  "quantity": {
+                    "S": "3"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "butter"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "salt"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pinch"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "chives"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "breakfast"
+          },
+          "id#updatedAt": {
+            "S": "0c3ccdd8-4d94-47b6-8e60-a24c51575bcd#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "e123af8e-abf0-4905-949c-2ae71bff1a1d"
+          },
+          "title": {
+            "S": "Guacamole"
+          },
+          "description": {
+            "S": "Fresh and zesty guacamole."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "10"
+          },
+          "slug": {
+            "S": "guacamole"
+          },
+          "createdAt": {
+            "S": "2023-11-02T12:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T12:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "avocado"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "lime juice"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "salt"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "onions"
+                  },
+                  "quantity": {
+                    "S": "0.25"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "cilantro"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "tomato"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "appetizer"
+          },
+          "id#updatedAt": {
+            "S": "e123af8e-abf0-4905-949c-2ae71bff1a1d#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "a3d785ad-d94c-4101-972b-f9617069e0df"
+          },
+          "title": {
+            "S": "Tomato Soup"
+          },
+          "description": {
+            "S": "Warm and comforting tomato soup."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "30"
+          },
+          "slug": {
+            "S": "tomato-soup"
+          },
+          "createdAt": {
+            "S": "2023-11-02T13:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T13:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "tomatoes"
+                  },
+                  "quantity": {
+                    "S": "6"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "onion"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "garlic"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "cloves"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "olive oil"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "vegetable broth"
+                  },
+                  "quantity": {
+                    "S": "4"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "basil"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "soup"
+          },
+          "id#updatedAt": {
+            "S": "a3d785ad-d94c-4101-972b-f9617069e0df#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "79b3d03d-881c-40a4-9c60-c811b95ed627"
+          },
+          "title": {
+            "S": "Greek Salad"
+          },
+          "description": {
+            "S": "Refreshing Greek salad with feta cheese."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "15"
+          },
+          "slug": {
+            "S": "greek-salad"
+          },
+          "createdAt": {
+            "S": "2023-11-02T14:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T14:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "cucumber"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "tomatoes"
+                  },
+                  "quantity": {
+                    "S": "4"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "red onion"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "feta cheese"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "olives"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "olive oil"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "oregano"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "salad"
+          },
+          "id#updatedAt": {
+            "S": "79b3d03d-881c-40a4-9c60-c811b95ed627#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "791692f4-a1b2-45f0-b017-e660fa4a7d13"
+          },
+          "title": {
+            "S": "Banana Bread"
+          },
+          "description": {
+            "S": "Moist banana bread with walnuts."
+          },
+          "servings": {
+            "N": "12"
+          },
+          "prepTime": {
+            "N": "60"
+          },
+          "slug": {
+            "S": "banana-bread"
+          },
+          "createdAt": {
+            "S": "2023-11-02T15:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T15:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "ripe bananas"
+                  },
+                  "quantity": {
+                    "S": "3"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "butter"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "sugar"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "egg"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "vanilla extract"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "baking soda"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "salt"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "flour"
+                  },
+                  "quantity": {
+                    "S": "1.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "walnuts"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "dessert"
+          },
+          "id#updatedAt": {
+            "S": "791692f4-a1b2-45f0-b017-e660fa4a7d13#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "0c0f9672-0da7-4529-b8cf-32b2fee5e7a5"
+          },
+          "title": {
+            "S": "Beef Tacos"
+          },
+          "description": {
+            "S": "Spicy beef tacos with avocado and salsa."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "25"
+          },
+          "slug": {
+            "S": "beef-tacos"
+          },
+          "createdAt": {
+            "S": "2023-11-02T16:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T16:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "ground beef"
+                  },
+                  "quantity": {
+                    "S": "500"
+                  },
+                  "measureUnit": {
+                    "S": "g"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "taco shells"
+                  },
+                  "quantity": {
+                    "S": "8"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "salsa"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "avocado"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "cheddar cheese"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "lettuce"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "head"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "main_course"
+          },
+          "id#updatedAt": {
+            "S": "0c0f9672-0da7-4529-b8cf-32b2fee5e7a5#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "65fb3186-8a41-48a9-8b1c-aead5c55b284"
+          },
+          "title": {
+            "S": "Chocolate Cake"
+          },
+          "description": {
+            "S": "Rich and moist chocolate cake."
+          },
+          "servings": {
+            "N": "12"
+          },
+          "prepTime": {
+            "N": "90"
+          },
+          "slug": {
+            "S": "chocolate-cake"
+          },
+          "createdAt": {
+            "S": "2023-11-02T17:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T17:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "flour"
+                  },
+                  "quantity": {
+                    "S": "1.75"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "cocoa powder"
+                  },
+                  "quantity": {
+                    "S": "0.75"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "baking soda"
+                  },
+                  "quantity": {
+                    "S": "1.5"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "baking powder"
+                  },
+                  "quantity": {
+                    "S": "1.5"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "eggs"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "milk"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "vegetable oil"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "boiling water"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "sugar"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "dessert"
+          },
+          "id#updatedAt": {
+            "S": "65fb3186-8a41-48a9-8b1c-aead5c55b284#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "be6035aa-915c-449f-89df-39f1629d7aa2"
+          },
+          "title": {
+            "S": "Chicken Parmesan"
+          },
+          "description": {
+            "S": "Crispy chicken topped with marinara and cheese."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "45"
+          },
+          "slug": {
+            "S": "chicken-parmesan"
+          },
+          "createdAt": {
+            "S": "2023-11-02T18:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T18:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "chicken breast"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "breadcrumbs"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "Parmesan cheese"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "egg"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "olive oil"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "marinara sauce"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "mozzarella cheese"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "main_course"
+          },
+          "id#updatedAt": {
+            "S": "be6035aa-915c-449f-89df-39f1629d7aa2#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "a804136d-dcd1-4833-a3a5-8c175bea65e5"
+          },
+          "title": {
+            "S": "Shrimp Scampi"
+          },
+          "description": {
+            "S": "Garlic butter shrimp with pasta."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "20"
+          },
+          "slug": {
+            "S": "shrimp-scampi"
+          },
+          "createdAt": {
+            "S": "2023-11-02T19:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T19:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "shrimp"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "lb"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "spaghetti"
+                  },
+                  "quantity": {
+                    "S": "400"
+                  },
+                  "measureUnit": {
+                    "S": "g"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "butter"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "garlic"
+                  },
+                  "quantity": {
+                    "S": "4"
+                  },
+                  "measureUnit": {
+                    "S": "cloves"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "lemon juice"
+                  },
+                  "quantity": {
+                    "S": "0.25"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "parsley"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "red pepper flakes"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "teaspoon"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "main_course"
+          },
+          "id#updatedAt": {
+            "S": "a804136d-dcd1-4833-a3a5-8c175bea65e5#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "a45aaa29-d833-404d-bf31-166fce17dab4"
+          },
+          "title": {
+            "S": "Trail Mix"
+          },
+          "description": {
+            "S": "A healthy and energizing trail mix."
+          },
+          "servings": {
+            "N": "8"
+          },
+          "prepTime": {
+            "N": "5"
+          },
+          "slug": {
+            "S": "trail-mix"
+          },
+          "createdAt": {
+            "S": "2023-11-02T20:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T20:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "almonds"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "cashews"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "dried cranberries"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "chocolate chips"
+                  },
+                  "quantity": {
+                    "S": "0.5"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "snack"
+          },
+          "id#updatedAt": {
+            "S": "a45aaa29-d833-404d-bf31-166fce17dab4#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "366b87c8-be47-42ed-8d4a-7ed88c41b166"
+          },
+          "title": {
+            "S": "Hummus and Veggies"
+          },
+          "description": {
+            "S": "Creamy hummus served with fresh vegetables."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "10"
+          },
+          "slug": {
+            "S": "hummus-and-veggies"
+          },
+          "createdAt": {
+            "S": "2023-11-02T21:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T21:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "hummus"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "carrot sticks"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "celery sticks"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "bell pepper strips"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "snack"
+          },
+          "id#updatedAt": {
+            "S": "366b87c8-be47-42ed-8d4a-7ed88c41b166#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "9ab6e542-2f66-434a-80ae-474142b5bc6f"
+          },
+          "title": {
+            "S": "Fruit Salad"
+          },
+          "description": {
+            "S": "A refreshing mix of seasonal fruits."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "15"
+          },
+          "slug": {
+            "S": "fruit-salad"
+          },
+          "createdAt": {
+            "S": "2023-11-02T22:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T22:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "strawberries"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "blueberries"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "kiwi"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "orange"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "pcs"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "snack"
+          },
+          "id#updatedAt": {
+            "S": "9ab6e542-2f66-434a-80ae-474142b5bc6f#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "20940b4e-905d-488b-8519-468045a1d21e"
+          },
+          "title": {
+            "S": "Yogurt Parfait"
+          },
+          "description": {
+            "S": "Layers of yogurt, granola, and fresh fruit."
+          },
+          "servings": {
+            "N": "4"
+          },
+          "prepTime": {
+            "N": "10"
+          },
+          "slug": {
+            "S": "yogurt-parfait"
+          },
+          "createdAt": {
+            "S": "2023-11-02T23:00:00Z"
+          },
+          "updatedAt": {
+            "S": "2023-11-02T23:00:00Z"
+          },
+          "ingredients": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "Greek yogurt"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "granola"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "honey"
+                  },
+                  "quantity": {
+                    "S": "2"
+                  },
+                  "measureUnit": {
+                    "S": "tablespoon"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "mixed berries"
+                  },
+                  "quantity": {
+                    "S": "1"
+                  },
+                  "measureUnit": {
+                    "S": "cup"
+                  }
+                }
+              }
+            ]
+          },
+          "category": {
+            "S": "snack"
+          },
+          "id#updatedAt": {
+            "S": "20940b4e-905d-488b-8519-468045a1d21e#2025-03-17T00:46:39.347Z"
+          }
+        }
+      }
+    }
+  ]
+}

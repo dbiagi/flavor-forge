@@ -2,7 +2,9 @@ package tests
 
 import (
 	"gororoba/internal/controller"
+	"net/http"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 )
 
@@ -11,18 +13,10 @@ type RecipesControllerTestSuite struct {
 	controller.RecipesController
 }
 
-func (s *RecipesControllerTestSuite) SetupSuite() {
-
-	// r := repository.NewRecipeRepository()
-	// h := handler.NewRecipesHandler()
-	// c := controller.NewRecipesController()
-	// ts := RecipesControllerTestSuite{}
-}
-
 func (s *HttpTestSuite) TestGetRecipesByCategory() {
+	r, err := http.Get(s.BaseURI + "/recipes/by-category?category=snack")
 
-}
+	assert.Nil(s.T(), err)
 
-func NewHandlerFuncWithMiddleware() {
-
+	assert.Equal(s.T(), 200, r.StatusCode)
 }

@@ -15,6 +15,7 @@ const (
 type HttpTestSuite struct {
 	suite.Suite
 	internal.AppServer
+	BaseURI string
 }
 
 // func BeforeTest(t *testing.T) {
@@ -51,6 +52,7 @@ type HttpTestSuite struct {
 func TestStartIntegrationTests(t *testing.T) {
 	ts := HttpTestSuite{
 		AppServer: NewTestServer(),
+		BaseURI:   "http://localhost:8080",
 	}
 
 	ts.AppServer.Start()

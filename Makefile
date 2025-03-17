@@ -4,7 +4,7 @@ COVERAGE_REPORT = coverage.out
 TEST_REPORT = report.out
 TEST_FILES = ./internal/...
 TEST_FILES_INTEGRATION = ./tests/...
-COMPOSE_FILE = ./docker-compose.yml
+COMPOSE_FILE = ./docker/docker-compose.yml
 DOCKER_COMPOSE = docker compose -f "${COMPOSE_FILE}"
 
 .PHONY: tests
