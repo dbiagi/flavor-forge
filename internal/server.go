@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -15,8 +16,15 @@ import (
 	"gororoba/internal/controller"
 	"gororoba/internal/handler"
 	"gororoba/internal/repository"
+	"gororoba/internal/utils"
 
 	"github.com/aws/aws-sdk-go/service/dynamodb"
+)
+
+var (
+	signalsToListenTo = []os.Signal{
+		syscall.SIGINT, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGTERM,
+	}
 )
 
 type controllers struct {
@@ -26,6 +34,7 @@ type controllers struct {
 
 type AppServer struct {
 	config.Configuration
+	dynamodb.DynamoDB
 	*http.Server
 	*mux.Router
 }
@@ -42,6 +51,7 @@ func (s *AppServer) Start() {
 
 	slog.Info("Connecting to dynamoDB ....")
 	dynamoDB := connectToDynamoDB(s.Configuration.AWSConfig)
+	s.DynamoDB = *dynamoDB
 
 	slog.Info("Starting server ....")
 	srv, router := createServer(s.Configuration.WebConfig)
@@ -52,7 +62,7 @@ func (s *AppServer) Start() {
 	appResources := createControllers(dynamoDB)
 
 	slog.Info("Registering routes and serving ....")
-	registerRoutesAndServe(router, appResources)
+	registerRoutesAndMiddlewares(router, appResources)
 
 	slog.Info(fmt.Sprintf("Application ready. Time elapsed: %v", time.Since(startTime)))
 
@@ -83,7 +93,7 @@ func createServer(webConfig config.WebConfig) (*http.Server, *mux.Router) {
 
 	go func() {
 		err := srv.ListenAndServe()
-		if err != nil {
+		if err != nil && err.Error() != "http: Server closed" {
 			slog.Error("Error starting server.", slog.String("error", err.Error()))
 		}
 	}()
@@ -103,19 +113,20 @@ func createControllers(db *dynamodb.DynamoDB) controllers {
 	}
 }
 
-func registerRoutesAndServe(router *mux.Router, controllers controllers) {
+func registerRoutesAndMiddlewares(router *mux.Router, controllers controllers) {
 	router.Use(config.TraceIdMiddleware)
-	router.HandleFunc("/health", controller.HandleRequest(controllers.HealthCheckController.Check)).Methods("GET")
-	router.HandleFunc("/health/complete", controller.HandleRequest(controllers.HealthCheckController.CheckComplete)).Methods("GET")
-	router.HandleFunc("/recipes/by-category", controller.HandleRequest(controllers.RecipesController.GetRecipesByCategory)).Methods("GET")
-	router.HandleFunc("/recipes/suggestion", controller.HandleRequest(controllers.RecipesController.GetSuggestion)).Methods("GET")
+	router.Use(mux.CORSMethodMiddleware(router))
+	router.HandleFunc("/health", utils.HandleRequest(controllers.HealthCheckController.Check)).Methods("GET")
+	router.HandleFunc("/health/complete", utils.HandleRequest(controllers.HealthCheckController.CheckComplete)).Methods("GET")
+	router.HandleFunc("/recipes/by-category", utils.HandleRequest(controllers.RecipesController.GetRecipesByCategory)).Methods("GET")
+	router.HandleFunc("/recipes/suggestion", utils.HandleRequest(controllers.RecipesController.GetSuggestion)).Methods("GET")
 }
 
 func configureGracefullShutdown(server *http.Server, webConfig config.WebConfig) {
 	slog.Info("Configuring graceful shutdown.")
 
 	c := make(chan os.Signal, 1)
-	signal.Notify(c, os.Interrupt)
+	signal.Notify(c, signalsToListenTo...)
 	<-c
 
 	ctx, cancel := context.WithTimeout(context.Background(), webConfig.ShutdownTimeout)

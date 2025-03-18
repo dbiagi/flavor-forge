@@ -3,11 +3,17 @@ GOEXEC = go
 COVERAGE_REPORT = coverage.out
 TEST_REPORT = report.out
 TEST_FILES = ./internal/...
-COMPOSE_FILE = ./docker-compose.yml
+TEST_FILES_INTEGRATION = ./tests/...
+COMPOSE_FILE = ./docker/docker-compose.yml
 DOCKER_COMPOSE = docker compose -f "${COMPOSE_FILE}"
 
-.PHONY: test
-test:
+.PHONY: tests
+tests:
+	make test-unit
+	make test-integration
+
+.PHONY: test-unit
+test-unit:
 	@echo "Running tests..."
 	${GOEXEC} test -v ${TEST_FILES}
 
@@ -19,20 +25,14 @@ test-coverage:
 .PHONY: test-integration
 test-integration:
 	@echo "Running integration tests..."
-	${GOEXEC} test -v ${TEST_FILES}
-
-# WIP: This target is not working yet
-.PHONY: test-integration-pipeline
-test-integration-pipeline:
-	@echo "Running integration tests..."
 	make infra-up
-	${GOEXEC} test -v ${TEST_FILES}
+	${GOEXEC} test -v ${TEST_FILES_INTEGRATION}
 	make infra-down
 
 .PHONY: serve-dev
-serve:
+serve-dev:
 	@echo "Starting server..."
-	${GOEXEC} run cmd/server/main.go serve --env=dev
+	${GOEXEC} run cmd/main.go serve --env=dev
 
 .PHONY: infra-up
 infra-up:
@@ -44,12 +44,12 @@ infra-down:
 	@echo "Stopping infrastructure..."
 	${DOCKER_COMPOSE} down
 
+.PHONY: deps
+deps:
+	@echo "Installing dependencies..."
+	${GOEXEC} mod vendor
+
 .PHONY: build
 build:
 	@echo "Building..."
 	${GOEXEC} build -o bin/app cmd/server/main.go
-
-.PHONY: run
-run:
-	@echo "Running..."
-	${GOEXEC} run cmd/server/main.go serve --env=dev
