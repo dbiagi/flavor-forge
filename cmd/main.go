@@ -12,7 +12,6 @@ func main() {
 
 	rootCmd := rootCmd()
 	rootCmd.PersistentFlags().StringVarP(&env, "env", "e", "development", "Environment to run the application")
-	rootCmd.AddCommand(commands.NewCreateRecipesCommand())
 	rootCmd.AddCommand(commands.NewServeCommand())
 	rootCmd.Execute()
 }
