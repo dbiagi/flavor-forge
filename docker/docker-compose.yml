@@ -8,8 +8,5 @@ services:
       SERVICES: dynamodb
       DEBUG: 1
     volumes: 
-      - localstack_data:/var/lib/localstack
       - ./dynamodb/init.sh:/etc/localstack/init/ready.d/init.sh
       - ./dynamodb/recipes.json:/tmp/recipes.json
-volumes:
-  localstack_data: {}
