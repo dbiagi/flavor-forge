@@ -1,4 +1,6 @@
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=dbiagi_gororoba&metric=coverage)](https://sonarcloud.io/summary/new_code?id=dbiagi_gororoba)
 # The Flavor Forge
+
 
 ## About
 
