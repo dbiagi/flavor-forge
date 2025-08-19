@@ -8,7 +8,7 @@ require (
 	github.com/gorilla/mux v1.8.1
 	github.com/joho/godotenv v1.5.1
 	github.com/spf13/cobra v1.8.1
-	go.uber.org/mock v0.5.0
+	go.uber.org/mock v0.6.0
 )
 
 require (
